@@ -25,9 +25,27 @@ const GetTeamById = async (req, res) =>{
     })
  }
 
+ const DeleteTeam = async (req, res) =>{
+   const id = parseInt(req.params.id);
+
+   pool.query(queries.GetTeamById, [id], (error, result) => {
+      const NoTeamFound = !result.rows.length;
+      if(NoTeamFound){
+      res.send("Team ain't exist in the database");
+      }
+
+
+      pool.query(queries.DeleteTeam, [id], (error, result) => {
+         if (error) throw error;
+         res.status(200).send("Team removed");
+      })
+   })
+ }
+
 module.exports ={
     AllTeams,
     GetTeamById,
-    AddTeam 
+    AddTeam,
+    DeleteTeam,
 };
 

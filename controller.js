@@ -42,10 +42,20 @@ const GetTeamById = async (req, res) =>{
    })
  }
 
+ const UpdateTeam = async (req, res) =>{
+   const id = parseInt(req.params.id);
+   const {position, match_played, wins, draws, loses, goals, goals_conceded, points} = req.body
+   pool.query(queries.UpdateTeam, [position, match_played, wins, draws, loses, goals, goals_conceded, points, id], (error, result) => {
+      if (error) throw error
+      res.status(200).send("Team updated");
+   })
+ }
+
 module.exports ={
     AllTeams,
     GetTeamById,
     AddTeam,
     DeleteTeam,
+    UpdateTeam,
 };
 

@@ -5,8 +5,8 @@ const router = Router()
 
 router.get("/", controller.AllTeams)
 router.get("/:id", controller.GetTeamById )
-router.put("/:id", controller.GetTeamById )
-router.post("/", controller.UpdateTeam )
+router.put("/:id", controller.UpdateTeam)
+router.post("/", controller.AddTeam )
 router.delete("/:id", controller.DeleteTeam)
 
 

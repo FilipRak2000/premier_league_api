@@ -17,13 +17,14 @@ INSERT INTO teams(
     team, position, match_played, wins, draws, loses, goals, goals_conceded, points)
 VALUES('Chelsea', 2, 4, 3, 1, 0, 8, 4, 10);
 
-CREATE TABLE TOP_SCORES(
+CREATE TABLE TOP_SCORES (
    id BIGSERIAL NOT NULL PRIMARY KEY,
-   ranking INT NOT NULL,
    player_name VARCHAR(20) NOT NULL,
    team VARCHAR(20) NOT NULL,
+   ranking INT NOT NULL,
    goals INT,
-   assists INT
+   assists INT,
+   team_id BIGINT NOT NULL REFERENCES teams (id)
 );
 
 --{   
